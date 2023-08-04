@@ -17,7 +17,7 @@ const adminRoutes = require("./routes/adminRoute");
 app.use("/admin", CORS(), adminRoutes);
 
 
-// app.use(express.static(path.join(__dirname, './frontend/build')));
+app.use(express.static(path.join(__dirname, './frontend/build')));
 // app.get("*", function(req, res) {
 //   res.sendFile(path.join(__dirname, './frontend/build/index.html'));
 // })
