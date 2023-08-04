@@ -17,9 +17,17 @@ const adminRoutes = require("./routes/adminRoute");
 app.use("/admin", CORS(), adminRoutes);
 
 
-app.use(express.static(path.join(__dirname, './frontend/build')));
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, './frontend/build/index.html'));
+// app.use(express.static(path.join(__dirname, './frontend/build')));
+// app.get("*", function(req, res) {
+//   res.sendFile(path.join(__dirname, './frontend/build/index.html'));
+// })
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './frontend/build/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
 })
 
 const PORT = process.env.PORT || 5000;
